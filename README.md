@@ -7,6 +7,7 @@ Visualization Houses from the Specific Address in Belgium as a 3D Model for [KPM
 - Numpy 1.22.1
 - Pandas 1.4.0
 - Matplotlib 3.5.1
+- Geopy 2.2.0
 ```
 #### Usage
 
