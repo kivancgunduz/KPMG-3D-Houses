@@ -10,7 +10,7 @@ Visualization Houses from the Specific Address in Belgium as a 3D Model for [KPM
 ```
 #### Usage
 
-<img src="https://github.com/becodeorg/BXL-Bouman-4/blob/master/content/0.projects/2.data_tools/2.3D_houses/lidar_seg.png">
+<img src="https://media.makeameme.org/created/lidarsensor.jpg">
 
 
 #### Contributors
