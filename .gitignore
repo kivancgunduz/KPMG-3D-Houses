@@ -133,7 +133,7 @@ dmypy.json
 ../DSM_files/*
 ../DTM_files/*
 
-../utils/geofile_samples_gdal.ipynb
-../utils/geofile_samples_rioxarray.ipynb
+./utils/geofile_samples_gdal.ipynb
+./utils/geofile_samples_rioxarray.ipynb
 
 
