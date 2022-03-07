@@ -130,6 +130,8 @@ dmypy.json
 
 # GeoTif
 
-utils/*.ipynb
+utils/
+geofile_samples_gdal.ipynb
+geofile_samples_rioxarray.ipynb
 
 
