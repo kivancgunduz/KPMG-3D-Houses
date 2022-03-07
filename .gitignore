@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# GeoTif
+
+../DSM_files/*
+../DTM_files/*
+
+../utils/geofile_samples_gdal.ipynb
+../utils/geofile_samples_rioxarray.ipynb
+
+
