@@ -30,7 +30,7 @@ class GeoFileDownloader():
         else:
             return True
 
-    def start_downloader(self, isDsm: bool=True, isDtm: bool=True):
+    def start_downloader(self, isDsm: bool = True, isDtm: bool = True, isCapa: bool = True):
         """
         """
         for i in range(1, 44):
@@ -47,3 +47,6 @@ class GeoFileDownloader():
                     pass
                 if(isDtm):
                     pass
+        
+        if(isCapa):
+            pass
