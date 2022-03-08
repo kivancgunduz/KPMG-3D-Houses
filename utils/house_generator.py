@@ -1,3 +1,4 @@
+import os
 from pyproj import Proj, Transformer
 import rasterio
 import rasterio.plot
@@ -6,7 +7,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import plotly.graph_objects as go
 import pandas as pd
-import os
+import geopandas as gpd
+
 
 
 
@@ -25,6 +27,11 @@ class Generate3DHouse():
         self.main_dsm_directory: str = '../data/DSM'
         self.main_dtm_directory: str = '../data/DTM'
         self.correct_tiff_path: str = None
+        self.x_max: int = None
+        self.x_min: int = None
+        self.y_max: int = None
+        self.y_min: int = None
+
 
 
     def check_geofile_path(self) -> bool:
@@ -46,7 +53,7 @@ class Generate3DHouse():
         try:
             
             dsm =  rasterio.open(dsm_path)
-            window_block = rasterio.windows.from_bounds(self.left, self.bottom, self.right, self.top, transform=dsm.window_transform)
+            window_block = rasterio.windows.from_bounds(self.x_min, self.y_min, self.x_max, self.y_max, transform=dsm.window_transform)
             block_dsm = dsm.read(1, window=window_block)
             dtm =  rasterio.open(dtm_path)
             block_dtm = dtm.read(1, window=window_block)
@@ -55,14 +62,31 @@ class Generate3DHouse():
             pass
         else:
             pass
+    
+    def create_building_polygon(self):
+        """
+        """
+        try:
+            for path in os.listdir('data/CaPa-CaBu/'):
+                df = gpd.read_file(path,bbox=(self.longitude,self.latitude,self.longitude,self.latitude))
+                if(df.size > 0):
+                    self.x_max = df.geometry.bounds.iloc[0]['maxx']
+                    self.x_min = df.geometry.bounds.iloc[0]['minx']
+                    self.y_max = df.geometry.bounds.iloc[0]['maxy']
+                    self.y_min = df.geometry.bounds.iloc[0]['miny']
+                    break
+        except FileNotFoundError:
+            print("CaPa/CaBu file not found.")
+        except:
+            print("Dataframe couldn't readed.")
             
     
-    def plot3D(self,column:np.ndarray, row:np.ndarray, block_dsm:np.ndarray, block_dtm:np.ndarray):
+    def plot3D(self,column:np.ndarray, row:np.ndarray, dsm:np.ndarray, dtm:np.ndarray):
         """
         A function 
         """
         try:
-            building = go.Figure(data=[go.Surface(y=column, x=row, z=(block_dsm-block_dtm))])
+            building = go.Figure(data=[go.Surface(y=column, x=row, z=(dsm-dtm))])
         except:
             pass
         else:
