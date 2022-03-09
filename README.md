@@ -15,12 +15,12 @@ Visualization Houses from the Specific Address in Belgium as a 3D Model for [KPM
 #### Usage
 - Clone repository
 - Make sure directory is the project directory.
-- Before running the application, You should download necessery data. You should run geofile_downloader.py
+- Before running the application, You should download necessery data. So, run geofile_downloader.py
 - Run main.py
 - Enter your address that should in Flanders/Brussels
 - Interact your 3D Building!
 
-<img src="https://media.makeameme.org/created/lidarsensor.jpg">
+<img src="https://drive.google.com/file/d/1ZMd4YbMBRC2j5vqGbrymVcu69XwgxBF2/view?usp=sharing">
 
 
 #### Contributors
@@ -30,3 +30,6 @@ Visualization Houses from the Specific Address in Belgium as a 3D Model for [KPM
 #### Timeline
 - Duration: `2 week`
 - Deadline: `09.03.22`
+
+
+<img src="https://media.makeameme.org/created/lidarsensor.jpg">
