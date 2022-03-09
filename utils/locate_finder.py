@@ -34,9 +34,11 @@ class LocateFinder:
         return (x_lambert,y_lambert)
     
 
-lf = LocateFinder('Cataloniëstraat, 9000 Gent')
-lf.address_to_coordinates()
-print(f'x={lf.latitude} y={lf.longitude}')
+#lf = LocateFinder('Cataloniëstraat, 9000 Gent')
+#lf.address_to_coordinates()
+#print(f'x={lf.latitude} y={lf.longitude}')
+lf2 = LocateFinder('Excelsiorlaan 31,1930 zaventem')
+print(lf2.address_to_lambert72())
 
 
     

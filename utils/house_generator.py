@@ -46,6 +46,23 @@ class Generate3DHouse():
             else:
                 return False
         
+    def create_building_polygon(self):
+        """
+        """
+        try:
+            for path in os.listdir('data/CaPa-CaBu/'):
+                df = gpd.read_file(path,bbox=(self.longitude,self.latitude,self.longitude,self.latitude))
+                if(df.size > 0):
+                    self.x_max = df.geometry.bounds.iloc[0]['maxx']
+                    self.x_min = df.geometry.bounds.iloc[0]['minx']
+                    self.y_max = df.geometry.bounds.iloc[0]['maxy']
+                    self.y_min = df.geometry.bounds.iloc[0]['miny']
+                    break
+        except FileNotFoundError:
+            print("CaPa/CaBu file not found.")
+        except:
+            print("Dataframe couldn't readed.")
+    
 
     def create_chm(self, dsm_path:str, dtm_path:str):
         """
@@ -63,24 +80,6 @@ class Generate3DHouse():
         else:
             pass
     
-    def create_building_polygon(self):
-        """
-        """
-        try:
-            for path in os.listdir('data/CaPa-CaBu/'):
-                df = gpd.read_file(path,bbox=(self.longitude,self.latitude,self.longitude,self.latitude))
-                if(df.size > 0):
-                    self.x_max = df.geometry.bounds.iloc[0]['maxx']
-                    self.x_min = df.geometry.bounds.iloc[0]['minx']
-                    self.y_max = df.geometry.bounds.iloc[0]['maxy']
-                    self.y_min = df.geometry.bounds.iloc[0]['miny']
-                    break
-        except FileNotFoundError:
-            print("CaPa/CaBu file not found.")
-        except:
-            print("Dataframe couldn't readed.")
-            
-    
     def plot3D(self,column:np.ndarray, row:np.ndarray, dsm:np.ndarray, dtm:np.ndarray):
         """
         A function 
@@ -96,7 +95,7 @@ class Generate3DHouse():
         """
         A function
         """
-        if(self.check_geofile_path()):
+        if((self.check_geofile_path()) and (self.y_max > 0)):
             chm_file_path = self.create_chm(path=self.correct_tiff_path)
         else:
             print('GeoTiFF file not found.')

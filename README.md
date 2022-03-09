@@ -20,8 +20,6 @@ Visualization Houses from the Specific Address in Belgium as a 3D Model for [KPM
 - Enter your address that should in Flanders/Brussels
 - Interact your 3D Building!
 
-<img src="https://drive.google.com/file/d/1ZMd4YbMBRC2j5vqGbrymVcu69XwgxBF2/view?usp=sharing">
-
 
 #### Contributors
 - Kivanc Gunduz
